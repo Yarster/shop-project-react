@@ -30,8 +30,13 @@ import ReactDOM from 'react-dom/client'
 //     </div>
 // )
 
-const Header = () => {
-    return <h1>Hello App.js</h1>
+interface HeaderProps {
+    title: string
+}
+
+const Header = (props: HeaderProps) => {
+    console.log(props)
+    return <h1>Hello {props.title}</h1>
 }
 
 const Content = () => {
@@ -48,17 +53,11 @@ const Content = () => {
         </React.Fragment>
     )
 }
-conts App = () => {
+const App = () => {
     return (
         <>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Debitis, facilis.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-                accusamus.
-            </p>
+            <Header title="React" />
+            <Content />
         </>
     )
 }
@@ -66,8 +65,6 @@ conts App = () => {
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
     <React.StrictMode>
-        <Header />
-        <Content />
         <App />
     </React.StrictMode>
 )
