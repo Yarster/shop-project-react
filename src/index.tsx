@@ -32,6 +32,7 @@ import ReactDOM from 'react-dom/client'
 
 type HeaderProps = {
     title: string
+    year?: number
 }
 
 type ContentProps = {
@@ -39,12 +40,16 @@ type ContentProps = {
     text2: string
 }
 
-const Header = (props: HeaderProps) => {
+const Header = ({ title, year }: HeaderProps) => {
     console.log(props)
-    return <h1>Hello {props.title}</h1>
+    return (
+        <h1>
+            Hello {props.title}, {props.year}
+        </h1>
+    )
 }
 
-const Content = (props: ContentProps) => {
+const Content = ({ text1, text2 }: ContentProps) => {
     return (
         <React.Fragment>
             <p>{props.text1}</p>
@@ -55,7 +60,7 @@ const Content = (props: ContentProps) => {
 const App = () => {
     return (
         <>
-            <Header title="React" />
+            <Header title="React" year={2023} />
             <Header title="TS" />
             <Content text1="lorem" text2="lorem2" />
         </>
