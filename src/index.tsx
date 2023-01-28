@@ -30,8 +30,13 @@ import ReactDOM from 'react-dom/client'
 //     </div>
 // )
 
-interface HeaderProps {
+type HeaderProps = {
     title: string
+}
+
+type ContentProps = {
+    text1: string
+    text2: string
 }
 
 const Header = (props: HeaderProps) => {
@@ -39,17 +44,11 @@ const Header = (props: HeaderProps) => {
     return <h1>Hello {props.title}</h1>
 }
 
-const Content = () => {
+const Content = (props: ContentProps) => {
     return (
         <React.Fragment>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Debitis, facilis.
-            </p>
-            <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-                accusamus.
-            </p>
+            <p>{props.text1}</p>
+            <p>{props.text2}</p>
         </React.Fragment>
     )
 }
@@ -57,7 +56,8 @@ const App = () => {
     return (
         <>
             <Header title="React" />
-            <Content />
+            <Header title="TS" />
+            <Content text1="lorem" text2="lorem2" />
         </>
     )
 }
