@@ -3,7 +3,7 @@ type HeaderProps = {
     year?: number
 }
 
-const Header = ({ title, year }: HeaderProps) => {
+export const Header = ({ title, year }: HeaderProps) => {
     console.log(title, year)
     return (
         <h1>
@@ -12,4 +12,4 @@ const Header = ({ title, year }: HeaderProps) => {
     )
 }
 
-export default Header
+//export default Header
