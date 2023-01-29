@@ -1,6 +1,4 @@
-import classes from './Content.module.css'
-
-const { content, purple, peru } = classes
+import './Content.scss'
 
 type ContentProps = {
     text1: string
@@ -11,7 +9,7 @@ const Content = ({ text1, text2 }: ContentProps) => {
     let data = false
     return (
         <>
-            <p className={`${content} ${data ? purple : peru}`}>{text1}</p>
+            <p className={`content ${data ? 'purple' : 'peru'}`}>{text1}</p>
             <p>{text2}</p>
         </>
     )
