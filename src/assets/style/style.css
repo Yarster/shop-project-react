@@ -1,0 +1,6 @@
+.header-wrap {
+    min-height: 90px;
+    padding-bottom: 2vh;
+    display: flex;
+    align-items: center;
+}
