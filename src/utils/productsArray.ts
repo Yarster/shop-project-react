@@ -25,14 +25,14 @@ const productsArray: Product[] = [
         title: 'iPhone 14',
         description: 'This is iPhone 14',
         type: 'phone',
-        capacity: '256',
+        capacity: '128',
         price: 1500,
     },
     {
         title: 'iPhone 13 Pro Max',
         description: 'This is iPhone 13 Pro Max',
         type: 'phone',
-        capacity: '256',
+        capacity: '512',
         price: 2100,
     },
     {
@@ -46,7 +46,7 @@ const productsArray: Product[] = [
         title: 'iPhone 13',
         description: 'This is iPhone 13',
         type: 'phone',
-        capacity: '256',
+        capacity: '128',
         price: 1200,
     },
 ]
