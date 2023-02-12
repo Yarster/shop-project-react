@@ -25,7 +25,6 @@ const ProductListItem = ({
     image,
 }: Props) => {
     const [count, setCount] = useState<number>(1)
-    const [color, setColor] = useState<string>('green')
 
     const onIncrement = () => {
         setCount((prevState: number) => prevState + 1)
