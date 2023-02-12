@@ -13,13 +13,23 @@ type CartData = {
 
 const App = (props: Props) => {
     const [cartData, setCartData] = useState<CartData>({
-        totalCount: 10,
-        totalPrice: 100,
+        totalCount: 1,
+        totalPrice: 500,
     })
+
+    const addProductToCart = (count: number, price: number) => {
+        setCartData((prevState) => ({
+            totalCount: prevState.totalCount + count,
+            totalPrice: prevState.totalPrice + price * count,
+        }))
+    }
     return (
         <>
             <CssBaseline />
             <Header cartData={cartData} />
+            <button onClick={() => addProductToCart(5, 500)}>
+                Add to cart (5 count, 500$ - price)
+            </button>
             <Main />
             <Footer />
         </>
