@@ -7,8 +7,13 @@ import Logo from 'components/Logo/Logo'
 import Menu from 'components/Menu/Menu'
 import CartHeader from 'components/CartHeader/CartHeader'
 
-type Props = {}
-const Header = (props: Props) => {
+type Props = {
+    productsInCart: {
+        [id: number]: number
+    }
+}
+
+const Header = ({ productsInCart }: Props) => {
     return (
         <>
             <AppBar
@@ -30,7 +35,7 @@ const Header = (props: Props) => {
                         </IconButton>
                         <Logo />
                         <Menu />
-                        <CartHeader />
+                        <CartHeader productsInCart={productsInCart} />
                     </Toolbar>
                 </Container>
             </AppBar>

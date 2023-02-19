@@ -9,6 +9,7 @@ import { useState } from 'react'
 import './ProductListItem.scss'
 
 type Props = {
+    addProductToCart: (count: number, price: number) => void
     title: string
     description: string
     type: string
@@ -23,16 +24,18 @@ const ProductListItem = ({
     capacity,
     price,
     image,
+    addProductToCart,
 }: Props) => {
     const [count, setCount] = useState<number>(1)
 
     const onIncrement = () => {
-        setCount(count + 1)
+        setCount((prevState: number) => prevState + 1)
     }
 
     const onDecrement = () => {
-        setCount(count - 1)
+        setCount((prevState: number) => prevState - 1)
     }
+
     return (
         <Card variant="outlined" className="product">
             <CardContent>
@@ -45,17 +48,30 @@ const ProductListItem = ({
                 <div className="product-features">Capacity:{capacity}</div>
                 <div className="product-price">Price:{price}</div>
                 <div className="product-quantity">
-                    <Button variant="outlined" onClick={() => onDecrement()}>
+                    <Button
+                        variant="outlined"
+                        onClick={() => onDecrement()}
+                        disabled={count <= 1}
+                    >
                         -
                     </Button>
                     <TextField size="small" value={count} />
-                    <Button variant="outlined" onClick={() => onIncrement()}>
+                    <Button
+                        variant="outlined"
+                        onClick={() => onIncrement()}
+                        disabled={count >= 10}
+                    >
                         +
                     </Button>
                 </div>
             </CardContent>
             <CardActions className="btns-wrap">
-                <Button variant="outlined">Add to cart</Button>
+                <Button
+                    variant="outlined"
+                    onClick={() => addProductToCart(count, price)}
+                >
+                    Add to cart
+                </Button>
             </CardActions>
         </Card>
     )
