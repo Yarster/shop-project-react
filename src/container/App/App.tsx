@@ -22,7 +22,6 @@ const App = (props: Props) => {
             [id]: (prevState[id] || 0) + count,
         }))
     }
-
     return (
         <>
             <CssBaseline />
