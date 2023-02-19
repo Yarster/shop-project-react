@@ -11,14 +11,15 @@ type ProductsInCartType = {
 }
 
 const App = (props: Props) => {
-    const [productsInCart, setproductsInCart] = useState<ProductsInCartType>({
+    const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
         1: 5,
         2: 5,
     })
 
     const addProductToCart = (id: number, count: number) => {
-        setproductsInCart((prevState) => ({
-            [id]: prevState[id] + count,
+        setProductsInCart((prevState) => ({
+            ...prevState,
+            [id]: (prevState[id] || 0) + count,
         }))
     }
     return (
