@@ -14,14 +14,23 @@ const App = (props: Props) => {
     const [productsInCart, setproductsInCart] = useState<ProductsInCartType>({
         1: 5,
         2: 5,
-        3: 1,
     })
 
-    const addProductToCart = (count: number, price: number) => {}
+    const addProductToCart = (id: number, count: number) => {
+        setproductsInCart((prevState) =>
+            Object.assign({}, prevState, {
+                [id]: prevState[id] + count,
+            })
+        )
+    }
+
     return (
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
+            <button onClick={() => addProductToCart(2, 1)}>
+                add to cart (2 id, count 1)
+            </button>
             <Main addProductToCart={addProductToCart} />
             <Footer />
         </>
