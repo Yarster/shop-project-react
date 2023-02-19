@@ -17,11 +17,10 @@ const App = (props: Props) => {
     })
 
     const addProductToCart = (id: number, count: number) => {
-        setproductsInCart((prevState) =>
-            Object.assign({}, prevState, {
-                [id]: prevState[id] + count,
-            })
-        )
+        setproductsInCart((prevState) => ({
+            ...prevState,
+            [id]: prevState[id] + count,
+        }))
     }
 
     return (
