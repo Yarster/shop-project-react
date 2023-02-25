@@ -1,8 +1,14 @@
 import Footer from 'container/Footer/Footer'
 import Header from 'container/Header/Header'
-import Main from 'container/Main/Main'
 import CssBaseline from '@mui/material/CssBaseline'
 import { useState } from 'react'
+import { Container } from '@mui/material'
+import Home from 'pages/Home/Home'
+import CartPage from 'pages/CartPage/CartPage'
+import { Routes, Route } from 'react-router-dom'
+import AboutPage from 'pages/AboutPage/AboutPage'
+import PaymentPage from 'pages/PaymentPage/PaymentPage'
+import ShippingPage from 'pages/ShippingPage/ShippingPage'
 
 type Props = {}
 
@@ -27,10 +33,18 @@ const App = (props: Props) => {
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => addProductToCart(2, 1)}>
-                add to cart (2 id, count 1)
-            </button>
-            <Main addProductToCart={addProductToCart} />
+            <Container component="main" sx={{ padding: '60px 0' }}>
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Home addProductToCart={addProductToCart} />}
+                    />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/payment" element={<PaymentPage />} />
+                    <Route path="/shipping" element={<ShippingPage />} />
+                </Routes>
+            </Container>
             <Footer />
         </>
     )
