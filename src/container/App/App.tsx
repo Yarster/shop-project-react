@@ -41,9 +41,6 @@ const App = (props: Props) => {
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
-            <button onClick={() => removeProductsFromCart(1)}>
-                Remove product
-            </button>
             <Container component="main" sx={{ padding: '60px 0' }}>
                 <Routes>
                     <Route
@@ -52,7 +49,12 @@ const App = (props: Props) => {
                     />
                     <Route
                         path="/cart"
-                        element={<CartPage productsInCart={productsInCart} />}
+                        element={
+                            <CartPage
+                                productsInCart={productsInCart}
+                                removeProductsFromCart={removeProductsFromCart}
+                            />
+                        }
                     />
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/payment" element={<PaymentPage />} />
