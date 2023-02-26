@@ -29,10 +29,21 @@ const App = (props: Props) => {
         }))
     }
 
+    const removeProductsFromCart = (id: number) => {
+        setProductsInCart((prevState) => {
+            let prevProductsInCart = { ...prevState }
+            delete prevProductsInCart[id]
+            return prevProductsInCart
+        })
+    }
+
     return (
         <>
             <CssBaseline />
             <Header productsInCart={productsInCart} />
+            <button onClick={() => removeProductsFromCart(1)}>
+                Remove product
+            </button>
             <Container component="main" sx={{ padding: '60px 0' }}>
                 <Routes>
                     <Route
