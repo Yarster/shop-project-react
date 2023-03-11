@@ -9,6 +9,7 @@ import { Routes, Route } from 'react-router-dom'
 import AboutPage from 'pages/AboutPage/AboutPage'
 import PaymentPage from 'pages/PaymentPage/PaymentPage'
 import ShippingPage from 'pages/ShippingPage/ShippingPage'
+import { omit } from 'lodash'
 
 type Props = {}
 
@@ -30,11 +31,7 @@ const App = (props: Props) => {
     }
 
     const removeProductsFromCart = (id: number) => {
-        setProductsInCart((prevState) => {
-            let prevProductsInCart = { ...prevState }
-            delete prevProductsInCart[id]
-            return prevProductsInCart
-        })
+        setProductsInCart((prevState) => omit(prevState, id))
     }
 
     return (
