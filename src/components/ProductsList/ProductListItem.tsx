@@ -1,16 +1,10 @@
-import {
-    CardContent,
-    CardActions,
-    Button,
-    Card,
-    TextField,
-} from '@mui/material'
+import { CardContent, CardActions, Button, Card } from '@mui/material'
 import Quantity from 'components/Quantity/Quantity'
 import { useState } from 'react'
 import './ProductListItem.scss'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
 import FavoriteIcon from '@mui/icons-material/Favorite'
-import { useAppSelector } from 'redux/hooks'
+import { useAppDispatch, useAppSelector } from 'redux/hooks'
 
 type Props = {
     id: number
@@ -44,11 +38,20 @@ const ProductListItem = ({
     }
 
     const isLiked = useAppSelector((state) => state.productLike[id])
+    const dispatch = useAppDispatch()
 
     return (
         <Card variant="outlined" className="product">
             <CardContent>
-                <Button variant="outlined">
+                <Button
+                    variant="outlined"
+                    onClick={() =>
+                        dispatch({
+                            type: 'TOGGLE_LIKE',
+                            id,
+                        })
+                    }
+                >
                     {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                 </Button>
                 <div className="product-image">
