@@ -17,19 +17,10 @@ type ProductsInCartType = {
     [id: number]: number
 }
 
-type ProductsLike = {
-    [id: number]: boolean
-}
-
 const App = (props: Props) => {
     const [productsInCart, setProductsInCart] = useState<ProductsInCartType>({
         1: 5,
         2: 5,
-    })
-
-    const [productsLike, setProductsLike] = useState<ProductsLike>({
-        1: true,
-        2: true,
     })
 
     const addProductToCart = (id: number, count: number) => {
@@ -50,13 +41,6 @@ const App = (props: Props) => {
         }))
     }
 
-    const toggleLike = (id: number) => {
-        setProductsLike((prevState) => ({
-            ...prevState,
-            [id]: !prevState[id],
-        }))
-    }
-
     return (
         <>
             <CssBaseline />
@@ -65,13 +49,7 @@ const App = (props: Props) => {
                 <Routes>
                     <Route
                         path="/"
-                        element={
-                            <Home
-                                addProductToCart={addProductToCart}
-                                productsLike={productsLike}
-                                toggleLike={toggleLike}
-                            />
-                        }
+                        element={<Home addProductToCart={addProductToCart} />}
                     />
                     <Route
                         path="/cart"
