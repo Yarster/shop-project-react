@@ -8,6 +8,8 @@ import {
 import Quantity from 'components/Quantity/Quantity'
 import { useState } from 'react'
 import './ProductListItem.scss'
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
+import FavoriteIcon from '@mui/icons-material/Favorite'
 
 type Props = {
     id: number
@@ -18,6 +20,7 @@ type Props = {
     capacity: string
     price: number
     image: string
+    isLiked: boolean
 }
 const ProductListItem = ({
     id,
@@ -28,6 +31,7 @@ const ProductListItem = ({
     price,
     image,
     addProductToCart,
+    isLiked,
 }: Props) => {
     const [count, setCount] = useState<number>(1)
 
@@ -42,6 +46,9 @@ const ProductListItem = ({
     return (
         <Card variant="outlined" className="product">
             <CardContent>
+                <Button variant="outlined">
+                    {isLiked ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+                </Button>
                 <div className="product-image">
                     <img src={image} alt="" />
                 </div>
